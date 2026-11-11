@@ -32,15 +32,17 @@ function H_transpoliacetileno(E_0,t,dt,N,posicion_pared,nombre)
 	%end	
 
 	% Graficar espectro de energía
-	titulo = ["Espectro de energía",nombre];
-    figure
-    plot(1:length(E),E,'o','MarkerSize',7)
-    xlabel('Estado n')
-    ylabel('Energía E_n')
-    title(titulo)
-    grid on
+	nombre_archivo = ["espectro_energia",nombre,".jpg"];
 
-    % Diagrama de niveles de energía
+	
+	figure
+	plot(1:length(E), E, '.', 'MarkerSize', 7)
+
+	xlabel('Estado n', 'FontSize', 20)
+	ylabel('Energía E_n', 'FontSize', 20)
+	title(sprintf('Espectro de energía\n%s', nombre), 'FontSize', 14)
+	print(gcf, nombre_archivo, '-djpg', '-r300')
+	grid on    % Diagrama de niveles de energía
     %figure
     %hold on
 
