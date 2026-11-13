@@ -7,7 +7,7 @@ function graficar_autofunciones(N,t,dt,posicion_pared,nombre_archivo,descripcion
     	%fprintf('Autovector:\n');
     	%disp(V(:,n));
 	%end	
-	indices = (E > -0.5) & (E < 0.5);
+	indices = (E > -abs(dt)) & (E < abs(dt));
 	E_filtrado = E(indices);
 	V_filtrado = V(:, indices);
 
@@ -21,14 +21,12 @@ function graficar_autofunciones(N,t,dt,posicion_pared,nombre_archivo,descripcion
 		plot(1:N, V_filtrado(:,i), '-o', ...
 			 'DisplayName', sprintf('E = %.4f', E_filtrado(i)), ...
 			 'LineWidth', 2);
-		 disp(['E = ', num2str(E_filtrado(i))]);
-		 disp(V_filtrado(:,i));
 	end
 
 	% Autovector elegido manualmente
-	plot(1:N, V(:,j), '-s', ...
-		 'DisplayName', sprintf('E= %.4f', E(j)), ...
-		 'LineWidth', 2);
+%	plot(1:N, V(:,j), '-s', ...
+%		 'DisplayName', sprintf('E= %.4f', E(j)), ...
+%		 'LineWidth', 2);
 
 	xlabel('Número de componente', 'FontSize', 50);
 	ylabel('Valor de la componente', 'FontSize', 50);
